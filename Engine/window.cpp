@@ -21,7 +21,7 @@ bool TerminateWindow() {
 	return true;
 }
 
-bool Render() {
+bool RenderScene() {
 	bool result = false;
 	if (!handle)
 		result = false;

@@ -3,7 +3,8 @@
 int main(void)
 {
 	CreateWindow();
-	Render();
+	RenderScene();
+	TerminateWindow();
 
 	return 0;
 }

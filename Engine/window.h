@@ -10,5 +10,5 @@
 static GLFWwindow* handle; // GLFW window handle
 
 bool CreateWindow(const uint_fast16_t width = 800, const uint_fast16_t height = 600, const char * title = "Engine"); // Creates a GLFW window
-bool Render(); // Run application's render loop
+bool RenderScene(); // Run application's render loop
 bool TerminateWindow(); // Terminates window
