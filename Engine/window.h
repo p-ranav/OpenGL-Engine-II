@@ -7,8 +7,15 @@
 #include <string>
 #include <memory>
 
-static GLFWwindow* handle; // GLFW window handle
+typedef struct Window {
+	uint_fast16_t width;
+	uint_fast16_t height;
+	char * title;
+	GLFWwindow * handle;
+} Window;
 
-bool CreateWindow(const uint_fast16_t width = 800, const uint_fast16_t height = 600, const char * title = "Engine"); // Creates a GLFW window
+static Window window;
+
+bool CreateWindow(); // Creates a GLFW window
 bool RenderScene(); // Run application's render loop
 bool TerminateWindow(); // Terminates window

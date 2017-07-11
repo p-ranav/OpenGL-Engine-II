@@ -1,16 +1,16 @@
 #include "window.h"
 
-bool CreateWindow(const uint_fast16_t width, const uint_fast16_t height, const char * title) {
+bool CreateWindow() {
 	bool result = false;
-	if (!glfwInit()) // Initialize GLFW
+	if (!glfwInit()) // initialize GLFW
 		result = false;
 	else {
-		handle = glfwCreateWindow(width, height, title, NULL, NULL); // Create GLFW Window
-		if (!handle)
+		window.handle = glfwCreateWindow(800, 600, "Engine", NULL, NULL); // create GLFW Window
+		if (!window.handle)
 			result = false;
 		else {
-			glfwMakeContextCurrent(handle); // Make OpenGL context current
-			glewInit(); // Initialize GLEW
+			glfwMakeContextCurrent(window.handle); // make OpenGL context current
+			glewInit(); // initialize GLEW
 		}
 	}
 	return result;
@@ -23,13 +23,13 @@ bool TerminateWindow() {
 
 bool RenderScene() {
 	bool result = false;
-	if (!handle)
+	if (!window.handle) // If handle is null, do nothing
 		result = false;
 	else {
-		while (!glfwWindowShouldClose(handle)) {
-			glClear(GL_COLOR_BUFFER_BIT);
-			glfwSwapBuffers(handle);
-			glfwPollEvents();
+		while (!glfwWindowShouldClose(window.handle)) { // check if window should close
+			glClear(GL_COLOR_BUFFER_BIT); // clear window
+			glfwSwapBuffers(window.handle); // swap front and back buffers
+			glfwPollEvents(); // poll for events
 		}
 		result = true;
 	}
