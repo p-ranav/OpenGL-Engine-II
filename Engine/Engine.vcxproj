@@ -169,6 +169,10 @@ xcopy /Y "$(ProjectDir)Shaders\*" "$(TargetDir)Shaders\*"</Command>
     <ClInclude Include="shader.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\cube.frag" />
+    <None Include="Shaders\cube.vert" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
