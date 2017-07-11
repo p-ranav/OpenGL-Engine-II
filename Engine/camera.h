@@ -32,4 +32,5 @@ void Rotate(const glm::quat& rotate_by); // rotate camera
 
 glm::vec3 GetEulerAngles(); // get euler angles
 glm::mat4 GetViewMatrix(); // get view matrix
+void UpdateViewMatrix(); // update the camera view matrix based on position & rotation
 glm::mat4 GetProjectionMatrix(); // get projection matrix

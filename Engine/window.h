@@ -1,5 +1,7 @@
 #pragma once
 
+#include "cube.h"
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
@@ -19,3 +21,5 @@ static Window window;
 bool CreateWindow(); // Creates a GLFW window
 bool RenderScene(); // Run application's render loop
 bool TerminateWindow(); // Terminates window
+
+void WindowResizeCallback(GLFWwindow* window, int width, int height);

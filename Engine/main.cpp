@@ -1,13 +1,13 @@
 #include "window.h"
-#include "shader.h"
+#include "camera.h"
+#include "cube.h"
 
 int main(void)
 {
 	CreateWindow();
-	GLuint program = CreateShaderProgram({
-		{ GL_VERTEX_SHADER, "Shaders/cube.vert" },
-		{ GL_FRAGMENT_SHADER, "Shaders/cube.frag"}
-	});
+	InitializeCamera();
+	SetPosition(glm::vec3(0, 0, 50));
+	InitializeCube();
 	RenderScene();
 	TerminateWindow();
 	return 0;

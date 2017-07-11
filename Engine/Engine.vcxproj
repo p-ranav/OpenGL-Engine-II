@@ -76,7 +76,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Libraries\glfw\include\;$(SolutionDir)Libraries\glew\include\;$(SolutionDir)Libraries\glm\glm\</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Libraries\glfw\include\;$(SolutionDir)Libraries\glew\include\;$(SolutionDir)Libraries\glm\glm\;$(SolutionDir)Libraries\soil2\include\</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -84,7 +84,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Libraries\glfw\include\;$(SolutionDir)Libraries\glew\include\;$(SolutionDir)Libraries\glm\glm\</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Libraries\glfw\include\;$(SolutionDir)Libraries\glew\include\;$(SolutionDir)Libraries\glm\glm\;$(SolutionDir)Libraries\soil2\include\</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -110,12 +110,13 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glfw\lib-vc2015;$(SolutionDir)Libraries\glew\lib\Release\x64;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glfw\lib-vc2015;$(SolutionDir)Libraries\glew\lib\Release\x64;$(SolutionDir)Libraries\soil2\lib\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>soil2.lib;glew32.lib;opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y "$(SolutionDir)Libraries\glew\bin\Release\x64\glew32.dll" "$(TargetDir)"
-xcopy /Y "$(ProjectDir)Shaders\*" "$(TargetDir)Shaders\*"</Command>
+xcopy /Y "$(ProjectDir)Shaders\*" "$(TargetDir)Shaders\*"
+xcopy /Y "$(ProjectDir)Textures\*" "$(TargetDir)Textures\*"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -150,22 +151,25 @@ xcopy /Y "$(ProjectDir)Shaders\*" "$(TargetDir)Shaders\*"</Command>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glfw\lib-vc2015;$(SolutionDir)Libraries\glew\lib\Release\x64;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\glfw\lib-vc2015;$(SolutionDir)Libraries\glew\lib\Release\x64;$(SolutionDir)Libraries\soil2\lib\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>soil2.lib;glew32.lib;opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y "$(SolutionDir)Libraries\glew\bin\Release\x64\glew32.dll" "$(TargetDir)"
-xcopy /Y "$(ProjectDir)Shaders\*" "$(TargetDir)Shaders\*"</Command>
+xcopy /Y "$(ProjectDir)Shaders\*" "$(TargetDir)Shaders\*"
+xcopy /Y "$(ProjectDir)Textures\*" "$(TargetDir)Textures\*"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="cube.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
+    <ClInclude Include="cube.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>

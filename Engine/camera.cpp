@@ -50,13 +50,17 @@ glm::vec3 GetEulerAngles() {
 }
 
 glm::mat4 GetViewMatrix() {
+	UpdateViewMatrix();
+	return camera.view_matrix;
+}
+
+void UpdateViewMatrix() {
 	if (camera.is_view_dirty) {
 		glm::mat4 translate = glm::translate(-camera.position);
 		glm::mat4 rotate = glm::transpose(glm::toMat4(camera.rotation));
 		camera.view_matrix = rotate * translate;
 		camera.is_view_dirty = false;
 	}
-	return camera.view_matrix;
 }
 
 glm::mat4 GetProjectionMatrix() {
