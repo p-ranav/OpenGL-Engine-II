@@ -35,35 +35,3 @@ void WindowResizeCallback(GLFWwindow * window_handle, int width, int height) {
 	SetProjectionMatrix(angle, aspect_ratio, near_value, far_value);
 	SetViewport(0, 0, width, height);
 }
-
-bool RenderScene(std::vector<std::function<void(void)>> render_functions) {
-	bool result = false;
-	if (!window.handle) // If handle is null, do nothing
-		result = false;
-	else {
-		result = true;
-		while (result && !glfwWindowShouldClose(window.handle)) { // check if window should close
-			glEnable(GL_DEPTH_TEST);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear window
-			glClearColor(0.0, 0.0, 0.0, 1.0);
-			float aspect_ratio = (float)window.width / (float)window.height;
-			float angle = 45.0f, near_value = 0.1f, far_value = 1000.0f;
-			SetProjectionMatrix(angle, aspect_ratio, near_value, far_value);
-			SetViewport(0, 0, window.width, window.height);
-
-			for (auto render_function : render_functions) {
-				try {
-					render_function();
-				}
-				catch (std::bad_function_call& e) {
-					std::cout << "Error calling rendering function: " << e.what() << std::endl;
-					result = false;
-				}
-			}
-
-			glfwSwapBuffers(window.handle); // swap front and back buffers
-			glfwPollEvents(); // poll for events
-		}
-	}
-	return result;
-}
