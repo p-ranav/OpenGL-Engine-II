@@ -30,65 +30,49 @@ void InitializeCube()
 	glBindVertexArray(cube.vao);
 
 	cube.indices = {
-		// Front Face
-		0, 1, 2, 0, 2, 3,
-		// Right Face
-		4, 5, 6, 4, 6, 7,
-		// Back Face
-		8, 9, 10, 8, 10, 11,
-		// Left Face
-		12, 13, 14, 12, 14, 15,
-		// Top Face
-		16, 17, 18, 16, 18, 19,
-		// Bottom Face
-		20, 21, 22, 20, 22, 23 };
+		0, 1, 2, 0, 2, 3,			// Front Face
+		4, 5, 6, 4, 6, 7,			// Right Face
+		8, 9, 10, 8, 10, 11,		// Back Face
+		12, 13, 14, 12, 14, 15,		// Left Face
+		16, 17, 18, 16, 18, 19,		// Top Face
+		20, 21, 22, 20, 22, 23 };	// Bottom Face
 
-	// Front Face Vertices + Texture Coordinates
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(-1.0, -1.0, 1.0), glm::vec2(0, 0)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(1.0, -1.0, 1.0), glm::vec2(1, 0)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(1.0, 1.0, 1.0), glm::vec2(1, 1)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(-1.0, 1.0, 1.0), glm::vec2(0, 1)));
 
-	// Right Face Vertices + Texture Coordinates
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(1.0, 1.0, 1.0), glm::vec2(0, 0)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(1.0, 1.0, -1.0), glm::vec2(1, 0)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(1.0, -1.0, -1.0), glm::vec2(1, 1)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(1.0, -1.0, 1.0), glm::vec2(0, 1)));
 
-	// Back Face Vertices + Texture Coordinates
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(-1.0, -1.0, -1.0), glm::vec2(0, 0)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(1.0, -1.0, -1.0), glm::vec2(1, 0)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(1.0, 1.0, -1.0), glm::vec2(1, 1)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(-1.0, 1.0, -1.0), glm::vec2(0, 1)));
 
-	// Left Face Vertices + Texture Coordinates
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(-1.0, -1.0, -1.0), glm::vec2(0, 0)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(-1.0, -1.0, 1.0), glm::vec2(1, 0)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(-1.0, 1.0, 1.0), glm::vec2(1, 1)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(-1.0, 1.0, -1.0), glm::vec2(0, 1)));
 
-	// Top Face Vertices + Texture Coordinates
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(1.0, 1.0, 1.0), glm::vec2(0, 0)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(-1.0, 1.0, 1.0), glm::vec2(1, 0)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(-1.0, 1.0, -1.0), glm::vec2(1, 1)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(1.0, 1.0, -1.0), glm::vec2(0, 1)));
 
-	// Bottom Face Vertices + Texture Coordinates
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(-1.0, -1.0, -1.0), glm::vec2(0, 0)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(1.0, -1.0, -1.0), glm::vec2(1, 0)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(1.0, -1.0, 1.0), glm::vec2(1, 1)));
 	cube.vertices.push_back(CubeVertexFormat(glm::vec3(-1.0, -1.0, 1.0), glm::vec2(0, 1)));
 
-	// Bind vbo
-	glGenBuffers(1, &cube.vbo);
-	// Array Buffer Size for Vertices = Number of Vertices * size of each vertex 
-	glBindBuffer(GL_ARRAY_BUFFER, cube.vbo);
+	glGenBuffers(1, &cube.vbo); 
+	glBindBuffer(GL_ARRAY_BUFFER, cube.vbo); // Array Buffer Size for Vertices = Number of Vertices * size of each vertex
 	glBufferData(GL_ARRAY_BUFFER, cube.vertices.size() * sizeof(CubeVertexFormat), &cube.vertices[0], GL_STATIC_DRAW);
 
-	// Bind ibo
 	glGenBuffers(1, &cube.ibo);
-	// Array Buffer Size for Indices = Number of Indices * size of each index (unsigned int)
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cube.ibo);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cube.ibo); // Array Buffer Size for Indices = Number of Indices * size of each index (unsigned int)
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, cube.indices.size() * sizeof(unsigned int), &cube.indices[0], GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
@@ -102,11 +86,9 @@ void InitializeCube()
 }
 
 void RenderCube() {
-	// Map shader variables
 	glUseProgram(cube.program);
 
-	// Bind Texture
-	glActiveTexture(GL_TEXTURE0);
+	glActiveTexture(GL_TEXTURE0); // Bind Cube Texture
 	glBindTexture(GL_TEXTURE_2D, cube.texture_id);
 	unsigned int textureLocation = glGetUniformLocation(cube.program, "texture1");
 	glUniform1i(textureLocation, 0);
@@ -115,7 +97,7 @@ void RenderCube() {
 	glUniformMatrix4fv(glGetUniformLocation(cube.program, "view_matrix"), 1, false, &GetViewMatrix()[0][0]);
 	glUniformMatrix4fv(glGetUniformLocation(cube.program, "projection_matrix"), 1, false, &GetProjectionMatrix()[0][0]);
 	glBindVertexArray(cube.vao);
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 	cube.rotation = 0.01f * cube.rotation_speed + cube.rotation;
 	cube.rotation_sin = glm::vec3(cube.rotation.x * M_PI / 180, cube.rotation.y * M_PI / 180, cube.rotation.z * M_PI / 180);

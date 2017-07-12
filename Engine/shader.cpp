@@ -1,10 +1,10 @@
 #include "shader.h"
 
 std::string ReadFile(std::string file_path) {
-	std::ifstream t(file_path);
+	std::ifstream t(file_path);	
 	std::string file_contents;
 
-	t.seekg(0, std::ios::end);
+	t.seekg(0, std::ios::end);	// Find size of the file
 	file_contents.reserve(t.tellg());
 	t.seekg(0, std::ios::beg);
 
@@ -24,8 +24,7 @@ GLuint CreateShader(GLenum shader_type, std::string shader_path)
 	glCompileShader(shader);
 	glGetShaderiv(shader, GL_COMPILE_STATUS, &compile_result);
 
-	// Check for Errors
-	if (compile_result == GL_FALSE) {
+	if (compile_result == GL_FALSE) { // check for shader compilation errors
 		int info_log_length = 0;
 		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &info_log_length);
 		std::vector<char> shader_log(info_log_length);
@@ -37,8 +36,7 @@ GLuint CreateShader(GLenum shader_type, std::string shader_path)
 	return shader;
 }
 
-GLuint CreateShaderProgram(std::map<GLenum, std::string> shader_pipeline)
-{
+GLuint CreateShaderProgram(std::map<GLenum, std::string> shader_pipeline) {
 	int link_result = 0;
 	GLuint program = glCreateProgram();
 	for (auto const &shader : shader_pipeline) {
@@ -48,13 +46,12 @@ GLuint CreateShaderProgram(std::map<GLenum, std::string> shader_pipeline)
 	glLinkProgram(program);
 	glGetProgramiv(program, GL_LINK_STATUS, &link_result);
 
-	// Check for link errors
-	if (link_result == GL_FALSE) {
+	if (link_result == GL_FALSE) { // check for shader program linking errors
 		int info_log_length = 0;
 		glGetProgramiv(program, GL_INFO_LOG_LENGTH, &info_log_length);
 		std::vector<char> program_log(info_log_length);
 		glGetProgramInfoLog(program, info_log_length, NULL, &program_log[0]);
-		std::cout << "Shader Loader LINK ERROR" << std::endl;
+		std::cout << "Error linking shader program!" << std::endl;
 		std::cout << &program_log[0] << std::endl;
 	}
 	return program;

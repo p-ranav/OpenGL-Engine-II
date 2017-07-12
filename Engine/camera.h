@@ -19,7 +19,7 @@ typedef struct Camera {
 	bool is_view_dirty; // should the view matrix be updated?
 } Camera;
 
-extern Camera camera;
+extern Camera camera; // global camera object
 
 void InitializeCamera(); // initialize camera struct members
 

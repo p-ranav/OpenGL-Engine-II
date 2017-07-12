@@ -17,7 +17,7 @@ typedef struct Window {
 	GLFWwindow * handle;
 } Window;
 
-extern Window window;
+extern Window window; // global window object
 
 bool CreateWindow(const uint_fast32_t width = 800, const uint_fast32_t height = 600, const char * title = "Engine"); // create a GLFW window
 bool TerminateWindow(); // terminate the GLFW window
