@@ -24,7 +24,7 @@ void InitializeCube()
 		{ GL_VERTEX_SHADER, "Shaders/cube.vert" },
 		{ GL_FRAGMENT_SHADER, "Shaders/cube.frag" }
 	});
-	cube.texture_id = SOIL_load_OGL_texture("Textures\\Portal.png", SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
+	cube.texture_id = SOIL_load_OGL_texture("Textures\\crate.jpg", SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
 
 	glGenVertexArrays(1, &cube.vao);
 	glBindVertexArray(cube.vao);
