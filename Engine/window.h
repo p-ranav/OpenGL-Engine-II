@@ -13,11 +13,11 @@
 typedef struct Window {
 	uint_fast16_t width;
 	uint_fast16_t height;
-	char * title;
+	const char * title;
 	GLFWwindow * handle;
 } Window;
 
-bool CreateWindow(); // create a GLFW window
+bool CreateWindow(const uint_fast32_t width = 800, const uint_fast32_t height = 600, const char * title = "Engine"); // create a GLFW window
 bool TerminateWindow(); // terminate the GLFW window
 void WindowResizeCallback(GLFWwindow* window, int width, int height); // called when window is resized
 bool RenderScene(std::vector<std::function<void(void)>> render_functions); // application's render loop

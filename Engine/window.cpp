@@ -2,14 +2,14 @@
 
 Window window;
 
-bool CreateWindow() {
+bool CreateWindow(const uint_fast32_t width, const uint_fast32_t height, const char * title) {
 	bool result = false;
 	if (!glfwInit()) // initialize GLFW
 		result = false;
 	else {
-		window.width = 800;
-		window.height = 600;
-		window.title = "Engine";
+		window.width = width;
+		window.height = height;
+		window.title = title;
 		window.handle = glfwCreateWindow(window.width, window.height, window.title, NULL, NULL); // create GLFW Window
 		if (!window.handle)
 			result = false;
