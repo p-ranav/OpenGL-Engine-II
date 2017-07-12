@@ -5,7 +5,10 @@ bool CreateWindow() {
 	if (!glfwInit()) // initialize GLFW
 		result = false;
 	else {
-		window.handle = glfwCreateWindow(800, 600, "Engine", NULL, NULL); // create GLFW Window
+		window.width = 800;
+		window.height = 600;
+		window.title = "Engine";
+		window.handle = glfwCreateWindow(window.width, window.height, window.title, NULL, NULL); // create GLFW Window
 		if (!window.handle)
 			result = false;
 		else {
@@ -22,10 +25,11 @@ bool TerminateWindow() {
 	return true;
 }
 
-void WindowResizeCallback(GLFWwindow * window, int width, int height)
-{
+void WindowResizeCallback(GLFWwindow * window_handle, int width, int height) {
+	window.width = width;
+	window.height = height;
 	float aspect_ratio = (float)width / (float)height;
-	float angle = 45.0f, near_value = 0.1f, far_value = 5000.0f;
+	float angle = 45.0f, near_value = 0.1f, far_value = 1000.0f;
 	SetProjectionMatrix(angle, aspect_ratio, near_value, far_value);
 	SetViewport(0, 0, width, height);
 }
@@ -36,8 +40,13 @@ bool RenderScene() {
 		result = false;
 	else {
 		while (!glfwWindowShouldClose(window.handle)) { // check if window should close
+			glEnable(GL_DEPTH_TEST);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear window
 			glClearColor(0.0, 0.0, 0.0, 1.0);
+			float aspect_ratio = (float)window.width / (float)window.height;
+			float angle = 45.0f, near_value = 0.1f, far_value = 1000.0f;
+			SetProjectionMatrix(angle, aspect_ratio, near_value, far_value);
+			SetViewport(0, 0, window.width, window.height);
 			UpdateCube();
 			RenderCube();
 			glfwSwapBuffers(window.handle); // swap front and back buffers

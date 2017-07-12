@@ -1,5 +1,7 @@
 #pragma once
 
+#include "window.h"
+
 #include <GL/glew.h>
 
 #define GLM_FORCE_RADIANS

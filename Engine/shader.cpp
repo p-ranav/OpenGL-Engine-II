@@ -15,20 +15,47 @@ std::string ReadFile(std::string file_path) {
 
 GLuint CreateShader(GLenum shader_type, std::string shader_path)
 {
-	GLuint shader = glCreateShader(GL_VERTEX_SHADER);
-	const char * shader_cstr = ReadFile(shader_path).c_str();
-	glShaderSource(shader, 1, &shader_cstr, NULL);
+	int compile_result = 0;
+	GLuint shader = glCreateShader(shader_type);
+	std::string source = ReadFile(shader_path);
+	const char *shader_code_ptr = source.c_str();
+	const int shader_code_size = static_cast<int>(source.size());
+	glShaderSource(shader, 1, &shader_code_ptr, &shader_code_size);
 	glCompileShader(shader);
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &compile_result);
+
+	// Check for Errors
+	if (compile_result == GL_FALSE) {
+		int info_log_length = 0;
+		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &info_log_length);
+		std::vector<char> shader_log(info_log_length);
+		glGetShaderInfoLog(shader, info_log_length, NULL, &shader_log[0]);
+		std::cout << "Error compiling shader " << shader_path << std::endl;
+		std::cout << &shader_log[0] << std::endl;
+		return 0;
+	}
 	return shader;
 }
 
 GLuint CreateShaderProgram(std::map<GLenum, std::string> shader_pipeline)
 {
+	int link_result = 0;
 	GLuint program = glCreateProgram();
 	for (auto const &shader : shader_pipeline) {
 		GLuint shader_id = CreateShader(shader.first, shader.second);
 		glAttachShader(program, shader_id);
 	}
 	glLinkProgram(program);
+	glGetProgramiv(program, GL_LINK_STATUS, &link_result);
+
+	// Check for link errors
+	if (link_result == GL_FALSE) {
+		int info_log_length = 0;
+		glGetProgramiv(program, GL_INFO_LOG_LENGTH, &info_log_length);
+		std::vector<char> program_log(info_log_length);
+		glGetProgramInfoLog(program, info_log_length, NULL, &program_log[0]);
+		std::cout << "Shader Loader LINK ERROR" << std::endl;
+		std::cout << &program_log[0] << std::endl;
+	}
 	return program;
 }

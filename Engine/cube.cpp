@@ -24,7 +24,7 @@ void InitializeCube()
 		{ GL_VERTEX_SHADER, "Shaders/cube.vert" },
 		{ GL_FRAGMENT_SHADER, "Shaders/cube.frag" }
 	});
-	cube.texture_id = SOIL_load_OGL_texture("Textures/Crate.bmp", SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
+	cube.texture_id = SOIL_load_OGL_texture("Textures\\Portal.png", SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
 
 	glGenVertexArrays(1, &cube.vao);
 	glBindVertexArray(cube.vao);
@@ -107,7 +107,6 @@ void UpdateCube() {
 }
 
 void RenderCube() {
-	glEnable(GL_DEPTH_TEST);
 	// Map shader variables
 	glUseProgram(cube.program);
 
@@ -118,8 +117,8 @@ void RenderCube() {
 	glUniform1i(textureLocation, 0);
 
 	glUniform3f(glGetUniformLocation(cube.program, "rotation"), cube.rotation_sin.x, cube.rotation_sin.y, cube.rotation_sin.z);
-	glUniformMatrix4fv(glGetUniformLocation(cube.program, "view_matrix"), 1, false, &(camera.view_matrix[0][0]));
-	glUniformMatrix4fv(glGetUniformLocation(cube.program, "projection_matrix"), 1, false, &(camera.projection_matrix[0][0]));
+	glUniformMatrix4fv(glGetUniformLocation(cube.program, "view_matrix"), 1, false, &GetViewMatrix()[0][0]);
+	glUniformMatrix4fv(glGetUniformLocation(cube.program, "projection_matrix"), 1, false, &GetProjectionMatrix()[0][0]);
 	glBindVertexArray(cube.vao);
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
