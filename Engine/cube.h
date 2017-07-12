@@ -13,4 +13,3 @@
 
 void InitializeCube();
 void RenderCube();
-void UpdateCube();

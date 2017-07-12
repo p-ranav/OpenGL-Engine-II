@@ -47,7 +47,6 @@ bool RenderScene() {
 			float angle = 45.0f, near_value = 0.1f, far_value = 1000.0f;
 			SetProjectionMatrix(angle, aspect_ratio, near_value, far_value);
 			SetViewport(0, 0, window.width, window.height);
-			UpdateCube();
 			RenderCube();
 			glfwSwapBuffers(window.handle); // swap front and back buffers
 			glfwPollEvents(); // poll for events

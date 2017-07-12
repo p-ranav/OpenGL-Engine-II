@@ -101,11 +101,6 @@ void InitializeCube()
 	cube.rotation = glm::vec3(0.0, 0.0, 0.0);
 }
 
-void UpdateCube() {
-	cube.rotation = 0.01f * cube.rotation_speed + cube.rotation;
-	cube.rotation_sin = glm::vec3(cube.rotation.x * M_PI / 180, cube.rotation.y * M_PI / 180, cube.rotation.z * M_PI / 180);
-}
-
 void RenderCube() {
 	// Map shader variables
 	glUseProgram(cube.program);
@@ -122,4 +117,6 @@ void RenderCube() {
 	glBindVertexArray(cube.vao);
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+	cube.rotation = 0.01f * cube.rotation_speed + cube.rotation;
+	cube.rotation_sin = glm::vec3(cube.rotation.x * M_PI / 180, cube.rotation.y * M_PI / 180, cube.rotation.z * M_PI / 180);
 }
