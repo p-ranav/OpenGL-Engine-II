@@ -1,5 +1,16 @@
 #include "camera.h"
 
+typedef struct Camera {
+	glm::vec4 view_port; // view port of the camera
+	glm::vec3 position; // camera position
+	glm::quat rotation; // camera rotation
+	glm::mat4 view_matrix; // view matrix
+	glm::mat4 projection_matrix; // projection matrix
+	bool is_view_dirty; // should the view matrix be updated?
+} Camera;
+
+Camera camera;
+
 void InitializeCamera() {
 	camera.view_port = glm::vec4(0);
 	camera.position = glm::vec3(0);

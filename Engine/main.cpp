@@ -1,15 +1,11 @@
 #include "window.h"
 #include "camera.h"
-#include "cube.h"
 
 int main(void)
 {
 	CreateWindow();
 	InitializeCamera();
-
-	InitializeCube();
-
-	RenderScene();
+	RenderScene(PrepareScene(ROTATING_CUBE));
 	TerminateWindow();
 	return 0;
 }
