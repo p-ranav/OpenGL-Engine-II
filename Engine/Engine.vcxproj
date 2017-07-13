@@ -163,6 +163,7 @@ xcopy /Y "$(ProjectDir)Textures\*" "$(TargetDir)Textures\*"</Command>
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="cube.cpp" />
+    <ClCompile Include="planet.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="shader.cpp" />
@@ -173,11 +174,14 @@ xcopy /Y "$(ProjectDir)Textures\*" "$(TargetDir)Textures\*"</Command>
     <ClInclude Include="cube.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="planet.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\cube.frag" />
     <None Include="Shaders\cube.vert" />
+    <None Include="Shaders\planet.frag" />
+    <None Include="Shaders\planet.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

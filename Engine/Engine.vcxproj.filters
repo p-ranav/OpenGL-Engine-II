@@ -31,6 +31,9 @@
     <ClCompile Include="scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="planet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -48,12 +51,21 @@
     <ClInclude Include="scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="planet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\cube.frag">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Shaders\cube.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Shaders\planet.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Shaders\planet.vert">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

@@ -5,7 +5,7 @@ int main(void)
 {
 	CreateWindow();
 	InitializeCamera();
-	RenderScene(PrepareScene(ROTATING_CUBE));
+	RenderScene(SceneLookup(PLANET_EARTH));
 	TerminateWindow();
 	return 0;
 }
