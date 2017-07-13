@@ -109,7 +109,7 @@ void RenderPlanets() {
 
 		const glm::vec4 white(1);
 		const glm::vec4 black(0);
-		const glm::vec4 ambient(1.0f, 1.0f, 1.0f, 1.0f);
+		const glm::vec4 ambient(0.7f, 0.7f, 0.7f, 1.0f);
 
 		// Map shader variables
 		glUseProgram(planet.program);

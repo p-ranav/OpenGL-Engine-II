@@ -10,11 +10,12 @@
 typedef struct InputInfo {
 	int key_w, key_a, key_s, key_d, key_q, key_e; // list of keys supported
 	bool is_key_pressed; // is some key pressed?
+
 	const float camera_translation_speed = 0.1f; // translation speed of the camera
 	glm::vec3 camera_translation; // camera translation to be applied when key is pressed
 
 	glm::ivec2 mouse_position; // mouse position saved in the MouseMoveCallback
-	const float camera_rotation_speed = 0.1f; // camera rotation speed
+	const float camera_rotation_speed = 0.3f; // camera rotation speed
 
 	const glm::vec3 local_forward = glm::vec3(0.0f, 0.0f, -1.0f); // local forward vector
 	const glm::vec3 local_up = glm::vec3(0.0f, 1.0f, 0.0f); // local up vector
