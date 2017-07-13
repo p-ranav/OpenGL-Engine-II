@@ -163,6 +163,7 @@ xcopy /Y "$(ProjectDir)Textures\*" "$(TargetDir)Textures\*"</Command>
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="cube.cpp" />
+    <ClCompile Include="input.cpp" />
     <ClCompile Include="planet.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="scene.cpp" />
@@ -172,6 +173,7 @@ xcopy /Y "$(ProjectDir)Textures\*" "$(TargetDir)Textures\*"</Command>
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="cube.h" />
+    <ClInclude Include="input.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="planet.h" />

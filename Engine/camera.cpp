@@ -6,10 +6,7 @@ void InitializeCamera() {
 	camera.view_port = glm::vec4(0);
 	camera.position = glm::vec3(0);
 	camera.rotation = glm::quat();
-	//camera.view_matrix = glm::mat4x4(1);
-	camera.view_matrix = glm::lookAt(glm::vec3(0.0f, 0.0f, 50.0f),
-		glm::vec3(0.0f, 0.0f, 0.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f));
+	camera.view_matrix = glm::mat4x4(1);
 	camera.projection_matrix = glm::mat4x4(1);
 	camera.is_view_dirty = false;
 }

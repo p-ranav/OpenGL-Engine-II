@@ -1,5 +1,6 @@
 #pragma once
 
+#include "input.h" // get input state and update camera before drawing frame
 #include "cube.h" // rotating cube scene
 #include "planet.h" // planets!
 

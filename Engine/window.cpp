@@ -16,6 +16,7 @@ bool CreateWindow(const uint_fast32_t width, const uint_fast32_t height, const c
 		else {
 			glfwMakeContextCurrent(window.handle); // make OpenGL context current
 			glfwSetWindowSizeCallback(window.handle, WindowResizeCallback);
+			glfwSetKeyCallback(window.handle, KeyPressCallback);
 			glewInit(); // initialize GLEW
 		}
 	}

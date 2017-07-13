@@ -31,6 +31,9 @@ bool RenderScene(std::vector<std::function<void(void)>> render_functions) {
 			SetProjectionMatrix(angle, aspect_ratio, near_value, far_value);
 			SetViewport(0, 0, window.width, window.height);
 
+			if (input.is_key_pressed) // handle keyboard input
+				Translate(input.camera_translation);
+
 			for (auto render_function : render_functions) {
 				try {
 					render_function();

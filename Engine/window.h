@@ -1,6 +1,7 @@
 #pragma once
 
 #include "scene.h"
+#include "input.h"
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
