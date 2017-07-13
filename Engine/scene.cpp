@@ -34,6 +34,11 @@ bool RenderScene(std::vector<std::function<void(void)>> render_functions) {
 			if (input.is_key_pressed) // handle keyboard input
 				Translate(input.camera_translation);
 
+			if (input.is_right_mouse_button_pressed) { // handle right mouse button + mouse movement
+				Rotate(input.mouse_rotation_x);
+				Rotate(input.mouse_rotation_y);
+			}
+
 			for (auto render_function : render_functions) {
 				try {
 					render_function();

@@ -15,8 +15,10 @@ bool CreateWindow(const uint_fast32_t width, const uint_fast32_t height, const c
 			result = false;
 		else {
 			glfwMakeContextCurrent(window.handle); // make OpenGL context current
-			glfwSetWindowSizeCallback(window.handle, WindowResizeCallback);
-			glfwSetKeyCallback(window.handle, KeyPressCallback);
+			glfwSetWindowSizeCallback(window.handle, WindowResizeCallback); // window resize callback
+			glfwSetKeyCallback(window.handle, KeyPressCallback); // key press callback
+			glfwSetCursorPosCallback(window.handle, MouseMoveCallback); // mouse movement callback
+			glfwSetMouseButtonCallback(window.handle, MousePressCallback); // mouse button press callback
 			glewInit(); // initialize GLEW
 		}
 	}

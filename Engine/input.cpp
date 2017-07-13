@@ -40,3 +40,29 @@ void KeyPressCallback(GLFWwindow* window, int key, int scancode, int action, int
 
 	input.camera_translation = glm::vec3(input.key_d - input.key_a, input.key_q - input.key_e, input.key_s - input.key_w) * input.camera_translation_speed;
 }
+
+void MouseMoveCallback(GLFWwindow * window, double xpos, double ypos) {
+	glm::ivec2 current_mouse_position = glm::ivec2(xpos, ypos);
+	glm::vec2 delta = glm::vec2(current_mouse_position - input.mouse_position); // calculate movement delta
+	input.mouse_position = current_mouse_position; // update mouse position
+
+	if (delta.x > 1 || delta.x < -1 || delta.y > 1 || delta.y < -1) { // calculate mouse rotation quaternions if there is a large enough delta movement
+		input.mouse_rotation_x = glm::angleAxis<float>(-input.camera_rotation_speed * glm::radians(delta.x), input.local_up);
+		input.mouse_rotation_y = glm::angleAxis<float>(-input.camera_rotation_speed * glm::radians(delta.y), input.local_right);
+	}
+	else { // zero out the rotation quaternions if the delta is not large enough
+		input.mouse_rotation_x = glm::vec3();
+		input.mouse_rotation_y = glm::vec3();
+	}
+}
+
+void MousePressCallback(GLFWwindow * window, int button, int action, int mods) {
+	double xpos, ypos;
+	glfwGetCursorPos(window, &xpos, &ypos);
+	input.mouse_position = glm::ivec2(xpos, ypos);
+
+	if (button == GLFW_MOUSE_BUTTON_RIGHT && (action == GLFW_PRESS || action == GLFW_REPEAT))
+		input.is_right_mouse_button_pressed = true;
+	else
+		input.is_right_mouse_button_pressed = false;
+}
