@@ -76,7 +76,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Libraries\glfw\include\;$(SolutionDir)Libraries\glew\include\;$(SolutionDir)Libraries\glm\glm\;$(SolutionDir)Libraries\soil2\include\</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Libraries\glfw\include\;$(SolutionDir)Libraries\glew\include\;$(SolutionDir)Libraries\glm\glm\;$(SolutionDir)Libraries\soil2\include\;$(SolutionDir)Libraries\stb\include\</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -84,7 +84,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Libraries\glfw\include\;$(SolutionDir)Libraries\glew\include\;$(SolutionDir)Libraries\glm\glm\;$(SolutionDir)Libraries\soil2\include\</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Libraries\glfw\include\;$(SolutionDir)Libraries\glew\include\;$(SolutionDir)Libraries\glm\glm\;$(SolutionDir)Libraries\soil2\include\;$(SolutionDir)Libraries\stb\include\</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -168,6 +168,8 @@ xcopy /Y "$(ProjectDir)Textures\*" "$(TargetDir)Textures\*"</Command>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="shader.cpp" />
+    <ClCompile Include="skybox.cpp" />
+    <ClCompile Include="texture.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +179,8 @@ xcopy /Y "$(ProjectDir)Textures\*" "$(TargetDir)Textures\*"</Command>
     <ClInclude Include="scene.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="planet.h" />
+    <ClInclude Include="skybox.h" />
+    <ClInclude Include="texture.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>

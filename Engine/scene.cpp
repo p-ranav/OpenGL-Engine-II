@@ -6,7 +6,10 @@ RenderFunctions SceneLookup(Scene scene_name) {
 		InitializeCube();
 		functions.push_back(RenderCube);
 	}
-	else if (scene_name == PLANET_EARTH) {
+	else if (scene_name == PLANET_EARTH) {	
+		InitializeSkybox();
+		functions.push_back(RenderSkybox);
+
 		Planet earth;
 		earth.days_per_year = 365;
 		earth.rotation_rate = 10.0f;
