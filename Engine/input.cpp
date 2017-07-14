@@ -5,8 +5,6 @@ InputInfo input;
 void KeyPressCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	if (action == GLFW_PRESS || action == GLFW_REPEAT)
 		input.is_key_pressed = true;
-	else if (action == GLFW_RELEASE)
-		input.is_key_pressed = false;
 
 	if (key == GLFW_KEY_W && (action == GLFW_PRESS || action == GLFW_REPEAT))
 		input.key_w = 1; // W key pressed
@@ -39,6 +37,9 @@ void KeyPressCallback(GLFWwindow* window, int key, int scancode, int action, int
 		input.key_e = 0; // E key released
 
 	input.camera_translation = glm::vec3(input.key_d - input.key_a, input.key_q - input.key_e, input.key_s - input.key_w) * input.camera_translation_speed;
+
+	if (action == GLFW_RELEASE && action != GLFW_REPEAT)
+		input.is_key_pressed = false;
 }
 
 void MouseMoveCallback(GLFWwindow * window, double xpos, double ypos) {
