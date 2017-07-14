@@ -28,5 +28,7 @@ typedef struct Planet {
 	unsigned int texture_id, topography_texture_id; // bmp texture id
 } Planet;
 
-void InitializePlanet(Planet& planet, float radius, float slices, float stacks, const char * texture_path);
-void RenderPlanets();
+extern Planet earth;
+
+void InitializeEarth(float radius, float slices, float stacks, const char * texture_path);
+void RenderEarth();

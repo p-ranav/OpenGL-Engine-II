@@ -10,11 +10,10 @@ RenderFunctions SceneLookup(Scene scene_name) {
 		InitializeSkybox();
 		functions.push_back(RenderSkybox);
 
-		Planet earth;
 		earth.days_per_year = 365;
 		earth.rotation_rate = 10.0f;
-		InitializePlanet(earth, 1, 128, 128, "Textures\\Earth.dds");
-		functions.push_back(RenderPlanets);
+		InitializeEarth(1, 128, 128, "Textures\\Earth.dds");
+		functions.push_back(RenderEarth);
 	}
 	return functions;
 }

@@ -2,7 +2,7 @@
 
 #include "input.h" // get input state and update camera before drawing frame
 #include "cube.h" // rotating cube scene
-#include "planet.h" // planets!
+#include "earth.h" // planets!
 #include "skybox.h" // milky way skybox
 
 #include <vector>
